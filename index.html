@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donasi Token Listrik Masjid Alfajri</title>
+  <title>Donasi Token Listrik Masjid Al Fajri</title>
 
   <style>
     body{
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg,#0f766e,#16a34a);
       margin:0;
       padding:20px;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg,#0f766e,#16a34a);
     }
 
     .container{
-      max-width:420px;
+      max-width:430px;
       margin:auto;
       background:white;
       padding:30px;
-      border-radius:20px;
+      border-radius:22px;
       box-shadow:0 10px 25px rgba(0,0,0,0.2);
-      margin-top:40px;
+      margin-top:30px;
     }
 
     h2{
@@ -39,27 +39,62 @@
     input{
       width:100%;
       padding:14px;
-      margin-top:6px;
+      margin-top:8px;
       border:1px solid #ccc;
       border-radius:12px;
       font-size:16px;
       box-sizing:border-box;
     }
 
+    .token-box{
+      margin-top:25px;
+      background:#f0fdf4;
+      padding:20px;
+      border-radius:15px;
+      text-align:center;
+      border:2px dashed #16a34a;
+    }
+
+    .token-title{
+      font-size:16px;
+      font-weight:bold;
+      color:#15803d;
+    }
+
+    .token-number{
+      font-size:28px;
+      font-weight:bold;
+      margin-top:12px;
+      color:#111;
+      letter-spacing:2px;
+    }
+
     button{
       width:100%;
       padding:15px;
-      margin-top:25px;
       border:none;
       border-radius:12px;
-      background:#16a34a;
-      color:white;
-      font-size:18px;
+      font-size:17px;
       font-weight:bold;
       cursor:pointer;
+      margin-top:18px;
     }
 
-    button:hover{
+    .copy-btn{
+      background:#0f766e;
+      color:white;
+    }
+
+    .copy-btn:hover{
+      background:#115e59;
+    }
+
+    .wa-btn{
+      background:#16a34a;
+      color:white;
+    }
+
+    .wa-btn:hover{
       background:#15803d;
     }
 
@@ -79,39 +114,69 @@
   <h2>⚡ Donasi Token Listrik</h2>
 
   <label>Nama Donatur</label>
-  <input type="text" id="nama" placeholder="Masukkan Nama">
+  <input type="text" id="nama" placeholder="Masukkan Nama Donatur">
 
-  <label>No Token Listrik</label>
-  <input type="text" id="token" placeholder="Masukkan No Token">
+  <label>No WhatsApp</label>
+  <input type="text" id="token" placeholder="Masukkan Nomor WhatsApp">
 
-  <button onclick="kirimWA()">Kirim ke WhatsApp</button>
+  <div class="token-box">
+
+    <div class="token-title">
+      Token Listrik Masjid Al Fajri
+    </div>
+
+    <div class="token-number" id="tokenMasjid">
+      45120029124
+    </div>
+
+    <button class="copy-btn" onclick="copyToken()">
+      📋 Copy Nomor Token
+    </button>
+
+  </div>
+
+  <button class="wa-btn" onclick="kirimWA()">
+    📲 Kirim Konfirmasi WhatsApp
+  </button>
 
   <div class="footer">
-    Masjid Alfajri ✨ Donatur Muda
+    Masjid Al Fajri ✨ Donatur Muda
   </div>
 
 </div>
 
 <script>
 
+function copyToken() {
+
+  let token = "45120029124";
+
+  navigator.clipboard.writeText(token);
+
+  alert("Nomor Token Berhasil Disalin!");
+}
+
 function kirimWA(){
 
   let nama = document.getElementById("nama").value;
-  let token = document.getElementById("token").value;
+  let nomorWA = document.getElementById("token").value;
 
   let pesan =
 `Assalamu’alaikum 🙏
 
-Konfirmasi Donasi Token Listrik Masjid Alfajri
+Konfirmasi Donasi Token Listrik Masjid Al Fajri
 
 📌 Nama Donatur : ${nama}
-📌 No Token : ${token}
+📌 Nomor WhatsApp : ${nomorWA}
+
+📌 Token Listrik Masjid :
+45120029124
 
 Terima kasih atas donasi yang diberikan 🤲`;
 
-  let nomor = "6281261727302";
+  let nomorTujuan = "6281261727302";
 
-  let url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
+  let url = `https://wa.me/${nomorTujuan}?text=${encodeURIComponent(pesan)}`;
 
   window.open(url, '_blank');
 }
