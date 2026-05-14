@@ -3,55 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Konfirmasi Donasi Masjid Alfajri</title>
+  <title>Donasi Token Listrik Masjid Alfajri</title>
+
   <style>
     body{
       font-family: Arial, sans-serif;
-      background:#f4f7fb;
+      background: linear-gradient(135deg,#0f766e,#16a34a);
       margin:0;
       padding:20px;
     }
 
     .container{
-      max-width:500px;
+      max-width:420px;
       margin:auto;
       background:white;
-      padding:25px;
-      border-radius:15px;
-      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+      padding:30px;
+      border-radius:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.2);
+      margin-top:40px;
     }
 
     h2{
       text-align:center;
       color:#0f766e;
+      margin-bottom:25px;
     }
 
     label{
       font-weight:bold;
-      margin-top:10px;
       display:block;
+      margin-top:15px;
+      color:#333;
     }
 
     input{
       width:100%;
-      padding:12px;
-      margin-top:5px;
+      padding:14px;
+      margin-top:6px;
       border:1px solid #ccc;
-      border-radius:10px;
+      border-radius:12px;
       font-size:16px;
+      box-sizing:border-box;
     }
 
     button{
       width:100%;
-      padding:14px;
-      margin-top:20px;
+      padding:15px;
+      margin-top:25px;
+      border:none;
+      border-radius:12px;
       background:#16a34a;
       color:white;
-      border:none;
-      border-radius:10px;
       font-size:18px;
-      cursor:pointer;
       font-weight:bold;
+      cursor:pointer;
     }
 
     button:hover{
@@ -60,63 +65,57 @@
 
     .footer{
       text-align:center;
-      margin-top:15px;
-      color:#666;
+      margin-top:20px;
+      color:#777;
       font-size:14px;
     }
   </style>
 </head>
+
 <body>
 
 <div class="container">
-  <h2>📲 Konfirmasi Donasi Token Listrik</h2>
 
-  <label>Nomor WhatsApp</label>
-  <input type="text" id="nomor" placeholder="628xxxxxxxxxx">
+  <h2>⚡ Donasi Token Listrik</h2>
 
   <label>Nama Donatur</label>
-  <input type="text" id="nama" placeholder="Nama Donatur">
+  <input type="text" id="nama" placeholder="Masukkan Nama">
 
-  <label>Jumlah Donasi</label>
-  <input type="text" id="jumlah" placeholder="200.000">
+  <label>No Token Listrik</label>
+  <input type="text" id="token" placeholder="Masukkan No Token">
 
-  <label>Tanggal</label>
-  <input type="date" id="tanggal">
-
-  <button onclick="kirimWA()">Kirim Konfirmasi WhatsApp</button>
+  <button onclick="kirimWA()">Kirim ke WhatsApp</button>
 
   <div class="footer">
     Masjid Alfajri ✨ Donatur Muda
   </div>
+
 </div>
 
 <script>
-function kirimWA() {
 
-  let nomor = document.getElementById("nomor").value;
+function kirimWA(){
+
   let nama = document.getElementById("nama").value;
-  let jumlah = document.getElementById("jumlah").value;
-  let tanggal = document.getElementById("tanggal").value;
+  let token = document.getElementById("token").value;
 
   let pesan =
-`Assalamu’alaikum Warahmatullahi Wabarakatuh 🙏
+`Assalamu’alaikum 🙏
 
-Alhamdulillah, donasi token listrik Masjid Alfajri telah kami terima.
+Konfirmasi Donasi Token Listrik Masjid Alfajri
 
-📌 Nama Donatur : *${nama}*
-📌 Nominal Donasi : *Rp ${jumlah}*
-📌 Tanggal : *${tanggal}*
+📌 Nama Donatur : ${nama}
+📌 No Token : ${token}
 
-Terima kasih atas partisipasi dan dukungan untuk Masjid Alfajri 🤲
+Terima kasih atas donasi yang diberikan 🤲`;
 
-Semoga menjadi amal jariyah. Aamiin.
-
-Pengurus Masjid Alfajri`;
+  let nomor = "6281261727302";
 
   let url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
 
   window.open(url, '_blank');
 }
+
 </script>
 
 </body>
