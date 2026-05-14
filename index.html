@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konfirmasi Donasi Masjid Alfajri</title>
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background:#f4f7fb;
+      margin:0;
+      padding:20px;
+    }
+
+    .container{
+      max-width:500px;
+      margin:auto;
+      background:white;
+      padding:25px;
+      border-radius:15px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2{
+      text-align:center;
+      color:#0f766e;
+    }
+
+    label{
+      font-weight:bold;
+      margin-top:10px;
+      display:block;
+    }
+
+    input{
+      width:100%;
+      padding:12px;
+      margin-top:5px;
+      border:1px solid #ccc;
+      border-radius:10px;
+      font-size:16px;
+    }
+
+    button{
+      width:100%;
+      padding:14px;
+      margin-top:20px;
+      background:#16a34a;
+      color:white;
+      border:none;
+      border-radius:10px;
+      font-size:18px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    button:hover{
+      background:#15803d;
+    }
+
+    .footer{
+      text-align:center;
+      margin-top:15px;
+      color:#666;
+      font-size:14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>📲 Konfirmasi Donasi Token Listrik</h2>
+
+  <label>Nomor WhatsApp</label>
+  <input type="text" id="nomor" placeholder="628xxxxxxxxxx">
+
+  <label>Nama Donatur</label>
+  <input type="text" id="nama" placeholder="Nama Donatur">
+
+  <label>Jumlah Donasi</label>
+  <input type="text" id="jumlah" placeholder="200.000">
+
+  <label>Tanggal</label>
+  <input type="date" id="tanggal">
+
+  <button onclick="kirimWA()">Kirim Konfirmasi WhatsApp</button>
+
+  <div class="footer">
+    Masjid Alfajri ✨ Donatur Muda
+  </div>
+</div>
+
+<script>
+function kirimWA() {
+
+  let nomor = document.getElementById("nomor").value;
+  let nama = document.getElementById("nama").value;
+  let jumlah = document.getElementById("jumlah").value;
+  let tanggal = document.getElementById("tanggal").value;
+
+  let pesan =
+`Assalamu’alaikum Warahmatullahi Wabarakatuh 🙏
+
+Alhamdulillah, donasi token listrik Masjid Alfajri telah kami terima.
+
+📌 Nama Donatur : *${nama}*
+📌 Nominal Donasi : *Rp ${jumlah}*
+📌 Tanggal : *${tanggal}*
+
+Terima kasih atas partisipasi dan dukungan untuk Masjid Alfajri 🤲
+
+Semoga menjadi amal jariyah. Aamiin.
+
+Pengurus Masjid Alfajri`;
+
+  let url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
+
+  window.open(url, '_blank');
+}
+</script>
+
+</body>
+</html>
